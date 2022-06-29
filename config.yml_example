@@ -1,0 +1,10 @@
+source: <url_to_download_flow_rules_yaml_file>
+
+inventory: <url_to_netbox_api_device/virtual-machines>
+
+creds:
+  username: <your_device_username>
+  password: <your_device_password>
+  key: <path_to_your_public_ssh_key>  # if both password and key are provided key is used
+
+cooldown: 10  # sleep time between reading data from source and deploying rules to devices
