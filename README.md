@@ -5,9 +5,10 @@ JunOS BGP Flow Spec routes provisioning tool
 [![License: MIT](https://img.shields.io/badge/License-MIT-blueviolet.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 
 ---
+
 ## Config
 Tool config file shoud look somewhat like this:
-```
+```yaml
 source: <url_to_download_flow_rules_yaml_file>
 
 inventory: <url_to_netbox_api_device/virtual-machines>
@@ -15,21 +16,25 @@ inventory: <url_to_netbox_api_device/virtual-machines>
 creds:
   username: <your_device_username>
   password: <your_device_password>
-  key: <path_to_your_public_ssh_key>  # if both password and key are provided key is used
+  key: <path_to_your_public_ssh_key>
 
-interval: 10  # sleep time (seconds) between reading data from source and deploying rules to devices
+interval: 10
 ```
 #### Options:
 - __source__: something like `https://<url>/repos/<reponame>/raw/flows.yml?raw`
+  You can use local FS routes file with `-f` flag.
+  If Web source is used you must provide Netbox token with `-t` option.
 - __inventory__: Netbox URL similar to `https://<netbox_url>/api/virtualization/virtual-machines/?role=<myfavoriterole>`
-- __creds__: username, password and/or ssh key to reach the devices. If both password and key are provided key is used
-- __interval__: sleep time between deploying rules to devices
+- __creds__: username, password and/or ssh key to reach the devices.
+  If both password and key are provided key is used
+- __interval__: sleep time (seconds) between deploying rules to devices
 
----
+**NOTE**: path to config file is passed with `-c` option`.
+**NOTE2**: log filepath and log level are passed with `-l` and `-d` flag respectively.
 
 ## Data
 Flows data must have the following format:
-```
+```yaml
 flows:
   - name: BOT-2251-1
     destination: 103.3.62.64/32
@@ -88,7 +93,8 @@ YAML Flow Spec routes data is parsed to XML format to build a NETCONF payload an
 
 Tool supports JunOS devices only.
 #### Result:
-```[edit routing-options flow]
+```bash
+[edit routing-options flow]
 root@vMX8# show
 route BOT-2251-1 {
     match {

@@ -1,5 +1,11 @@
 package device
 
+import (
+	"encoding/json"
+	"io/ioutil"
+	"net/http"
+)
+
 type DeviceData struct {
 	Name string
 	Site struct {
@@ -39,28 +45,28 @@ func (n *NetboxResponse) getDevices() []*Device {
 }
 
 func GetDeviceList(inventory string) ([]*Device, error) {
-	// response, err := http.Get(inventory)
-	// if err != nil {
-	// 	return nil, err
-	// }
-	// defer response.Body.Close()
-	//
-	// body, err := ioutil.ReadAll(response.Body)
-	// if err != nil {
-	// 	return nil, err
-	// }
-	//
-	// var result NetboxResponse
-	// err = json.Unmarshal(body, &result)
-	// if err != nil {
-	// 	return nil, err
-	// }
-	//
-	// devices = result.getDevices()
+	response, err := http.Get(inventory)
+	if err != nil {
+		return nil, err
+	}
+	defer response.Body.Close()
 
-	devices := []*Device{}
-	devices = append(devices, &Device{Name: "10.10.30.4"})
-	devices = append(devices, &Device{Name: "10.10.30.8"})
+	body, err := ioutil.ReadAll(response.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	result := &NetboxResponse{}
+	err = json.Unmarshal(body, result)
+	if err != nil {
+		return nil, err
+	}
+
+	devices := result.getDevices()
+
+	// devices := []*Device{}
+	// devices = append(devices, &Device{Name: "10.10.30.4"})
+	// devices = append(devices, &Device{Name: "10.10.30.8"})
 
 	return devices, nil
 }
