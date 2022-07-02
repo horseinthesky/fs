@@ -20,7 +20,6 @@ func (t TermOrder) String() string {
 	}[t]
 }
 
-
 func (t TermOrder) MarshalXML(e *xml.Encoder, start xml.StartElement) error {
 	var s string
 

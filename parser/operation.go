@@ -24,7 +24,7 @@ func (o Operation) String() string {
 
 func (o Operation) MarshalXMLAttr(name xml.Name) (xml.Attr, error) {
 	return xml.Attr{
-		Name: name,
+		Name:  name,
 		Value: o.String(),
 	}, nil
 }
