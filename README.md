@@ -23,13 +23,13 @@ interval: 10
 #### Options:
 - __source__: something like `https://<url>/repos/<reponame>/raw/flows.yml?raw`
   You can use local FS routes file with `-f` flag.
-  If Web source is used you must provide Netbox token with `-t` option.
+  If Web source is used you must provide Netbox token with `-t` flag.
 - __inventory__: Netbox URL similar to `https://<netbox_url>/api/virtualization/virtual-machines/?role=<myfavoriterole>`
 - __creds__: username, password and/or ssh key to reach the devices.
   If both password and key are provided key is used
 - __interval__: sleep time (seconds) between deploying rules to devices
 
-**NOTE**: path to config file is passed with `-c` option`.
+**NOTE**: path to config file is passed with `-c` flag.
 **NOTE2**: log filepath and log level are passed with `-l` and `-d` flag respectively.
 
 ## Data
