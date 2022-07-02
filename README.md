@@ -30,6 +30,7 @@ interval: 10
 - __interval__: sleep time (seconds) between deploying rules to devices
 
 **NOTE**: path to config file is passed with `-c` flag.
+
 **NOTE2**: log filepath and log level are passed with `-l` and `-d` flag respectively.
 
 ## Data
