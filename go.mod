@@ -1,4 +1,4 @@
-module fs
+module github.com/horseinthesky/fs
 
 go 1.17
 

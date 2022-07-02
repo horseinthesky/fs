@@ -5,9 +5,9 @@ import (
 	"log"
 	"time"
 
-	"fs/device"
-	"fs/internal"
-	"fs/parser"
+	"github.com/horseinthesky/fs/device"
+	"github.com/horseinthesky/fs/internal"
+	"github.com/horseinthesky/fs/parser"
 )
 
 func main() {
