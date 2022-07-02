@@ -28,21 +28,7 @@ interval: 10  # sleep time (seconds) between reading data from source and deploy
 ---
 
 ## Data
-Tool configures Flow Spec routes on JunOS devices.
-
-#### Example:
-```[edit routing-options flow]
-root@vMX8# show
-route BOT-2251-1 {
-    match {
-        destination-port [ 14433 14444 ];
-        destination 103.3.62.64/32;
-    }
-    then discard;
-}
-```
-
-Flows data should have the following format:
+Flows data must have the following format:
 ```
 flows:
   - name: BOT-2251-1
@@ -97,3 +83,18 @@ flows:
 - __destination-port__: destination TCP/UDP port
 - __source-port__: source TCP/UDP port
 - __action__: `accept`/`discard` (default)
+
+YAML Flow Spec routes data is parsed to XML format to build a NETCONF payload and deployed to devices via NETCONF.
+
+Tool supports JunOS devices only.
+#### Result:
+```[edit routing-options flow]
+root@vMX8# show
+route BOT-2251-1 {
+    match {
+        destination-port [ 14433 14444 ];
+        destination 103.3.62.64/32;
+    }
+    then discard;
+}
+```
