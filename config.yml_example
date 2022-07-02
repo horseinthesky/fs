@@ -7,4 +7,4 @@ creds:
   password: <your_device_password>
   key: <path_to_your_public_ssh_key>  # if both password and key are provided key is used
 
-cooldown: 10  # sleep time between reading data from source and deploying rules to devices
+interval: 10  # sleep time between reading data from source and deploying rules to devices

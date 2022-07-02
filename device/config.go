@@ -8,7 +8,7 @@ import (
 	"github.com/scrapli/scrapligo/driver/base"
 	"github.com/scrapli/scrapligo/netconf"
 
-	"github.com/horseinthesky/fs/internal"
+	"fs/internal"
 )
 
 var wg sync.WaitGroup

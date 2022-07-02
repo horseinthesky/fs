@@ -17,7 +17,7 @@ type Config struct {
 	Source    string
 	Inventory string
 	Creds     Creds
-	Cooldown  int
+	Interval  int
 }
 
 func ParseConfig(fileName string) (*Config, error) {
